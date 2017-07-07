@@ -6,7 +6,7 @@ function [tcStruc] = tcspcAnalysis(varargin)
 
 %% Select file to process
 if nargin == 0
-    [filename, path] = uigetfile('.txt', 'Select TCSPC .txt file');
+    [filename, path] = uigetfile('.txt', 'Select TCSPC .txt file (samples only)');
 else
     filename = varargin{1};
     path = [pwd '\'];
@@ -17,8 +17,8 @@ disp(['Importing data from: ' filename]); tic;
 headerLines = 10;
 delimiter = ' ';
 dataStruc = importdata([path filename], delimiter, headerLines);
-frTimes = dataStruc.data(:,1);
-ca = dataStruc.data(:,2);
+%frTimes = dataStruc.data(:,1);
+ca = dataStruc.data(:,1);
 toc;
 
 
@@ -37,11 +37,11 @@ ac = xcorr(ca,ca, 10000);   % autocorrelation
 
 %% save to output struc
 tcStruc.filename = filename;
-tcStruc.frTimes = frTimes;
+tcStruc.frTimes = 0:0.001:length(ca2); %frTimes;
 tcStruc.ca = ca2;
 tcStruc.caPks = pks;
-tcStruc.pkRateHz = evRateHz;
-tcStruc.autoCorr = ac;
+tcStruc.evRateHz = evRateHz;
+tcStruc.caAutoCorr = ac;
 
 %% plotting
 
