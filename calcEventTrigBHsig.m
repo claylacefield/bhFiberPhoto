@@ -3,8 +3,8 @@ function [eventCa] = calcEventTrigBHsig(ca, eventTimes, toPlot)
 %% USAGE: [eventCa] = calcEventTrigFPsig(fpStruc, behavStruc, eventName, toPlot);
 
 % window for event triggered calcium signal extraction
-preEvSec = 10;
-postEvSec = 30;
+preEvSec = 5; %10;
+postEvSec = 10; %30;
 
 sfFP = 1000;
 
