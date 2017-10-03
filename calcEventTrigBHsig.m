@@ -1,4 +1,4 @@
-function [eventCa] = calcEventTrigBHsig(ca, tcBehStruc, eventName, toPlot)
+function [eventCa] = calcEventTrigBHsig(ca, eventTimes, toPlot)
 
 %% USAGE: [eventCa] = calcEventTrigFPsig(fpStruc, behavStruc, eventName, toPlot);
 
@@ -8,7 +8,7 @@ postEvSec = 30;
 
 sfFP = 1000;
 
-eventTimes = tcBehStruc.(eventName);
+%eventTimes = tcBehStruc.(eventName);
 %eventTimes(eventTimes>(max(tFP)-30))= NaN;
 
 preEvSamp = preEvSec*round(sfFP); % samples before event to include in ca epoch
@@ -28,7 +28,7 @@ for evNum = 1:length(eventTimes)
             zeroInds(evNum) = NaN;
         end
     catch
-        disp(['Problem with event # ' num2str(evNum) ' of type ' eventName]);
+        disp(['Problem with event # ' num2str(evNum)]); % ' of type ' eventName]);
     end
 end
 
