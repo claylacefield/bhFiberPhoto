@@ -51,7 +51,7 @@ for j = 1:length(fields)
     if ~isempty(strfind(fields{j}, 'Ca'))
 %         try
             k = k +1;
-            subplot(2,2,k);
+            subplot(2,3,k);
             %plotMeanSEM(eventFpStruc.(fields{j}), 'b');
             plotBHeventShade(eventFpStruc.(fields{j})); %, [-10 30]);
             title(fields{j});
